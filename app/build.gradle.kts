@@ -68,9 +68,19 @@ dependencies {
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
 
+/*
+
     implementation(libs.ktor.client.cio.jvm)
     implementation(libs.ktor.client.content.negotiation)
     implementation(libs.ktor.serialization.kotlinx.json)
     implementation("com.google.code.gson:gson:2.10.1")
     implementation(libs.coil.compose)
+
+*/
+
+    implementation("io.ktor:ktor-client-cio-jvm:2.3.2")
+    implementation("io.ktor:ktor-client-content-negotiation:2.3.2")
+    implementation("io.ktor:ktor-serialization-kotlinx-json:2.3.2")
+    implementation("com.google.code.gson:gson:2.8.9")
+    implementation("io.coil-kt:coil-compose:2.4.0")
 }

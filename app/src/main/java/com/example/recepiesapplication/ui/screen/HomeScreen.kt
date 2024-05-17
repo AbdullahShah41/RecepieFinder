@@ -1,10 +1,8 @@
 package com.example.recepiesapplication.ui.screen
 
-import android.content.Context
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.lifecycle.ViewModelProvider
-import com.example.recepiesapplication.Application
 import com.example.recepiesapplication.DashboardActivity
 import com.example.recepiesapplication.ui.viewmodel.RecipeViewIntent
 import com.example.recepiesapplication.ui.viewmodel.RecipeViewModel
@@ -12,7 +10,6 @@ import com.example.recepiesapplication.ui.viewmodel.RecipeViewState
 import com.yourssohail.recipefinderapp.ui.components.ErrorComponent
 import com.yourssohail.recipefinderapp.ui.components.LoadingComponent
 import com.yourssohail.recipefinderapp.ui.components.SuccessComponent
-
 
 @Composable
 fun HomeScreen(state: RecipeViewState = RecipeViewState.Loading, activity: DashboardActivity) {
