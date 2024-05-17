@@ -1,6 +1,5 @@
 package com.example.recepiesapplication.data.api
 
-import com.example.recepiesapplication.data.model.Category
 import com.example.recepiesapplication.data.model.Meal
 import com.example.recepiesapplication.data.model.MealResponse
 import com.example.recepiesapplication.utils.Common

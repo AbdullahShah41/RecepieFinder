@@ -18,7 +18,6 @@ class RecipeViewModel: ViewModel() {
         when(intent) {
             is RecipeViewIntent.LoadRandomRecipe -> loadRandomRecipe()
             is RecipeViewIntent.SearchRecipes -> searchRecipe(intent.query)
-            // will add recipes categories
 
         }
     }

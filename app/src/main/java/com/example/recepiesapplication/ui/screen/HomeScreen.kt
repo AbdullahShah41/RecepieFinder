@@ -1,8 +1,11 @@
 package com.example.recepiesapplication.ui.screen
 
+import android.content.Context
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.getValue
+import androidx.lifecycle.ViewModelProvider
+import com.example.recepiesapplication.Application
+import com.example.recepiesapplication.DashboardActivity
 import com.example.recepiesapplication.ui.viewmodel.RecipeViewIntent
 import com.example.recepiesapplication.ui.viewmodel.RecipeViewModel
 import com.example.recepiesapplication.ui.viewmodel.RecipeViewState
@@ -10,27 +13,34 @@ import com.yourssohail.recipefinderapp.ui.components.ErrorComponent
 import com.yourssohail.recipefinderapp.ui.components.LoadingComponent
 import com.yourssohail.recipefinderapp.ui.components.SuccessComponent
 
-@Composable
-fun HomeScreen(recipeViewModel: RecipeViewModel) {
-    val state by recipeViewModel.state
 
-    when(state) {
+@Composable
+fun HomeScreen(state: RecipeViewState = RecipeViewState.Loading, activity: DashboardActivity) {
+//    val state by recipeViewModel.state
+
+    val viewModel = ViewModelProvider(activity).get(RecipeViewModel::class.java)
+
+    when(state){
+        // Loading component
         is RecipeViewState.Loading -> LoadingComponent()
+        // Success Component
         is RecipeViewState.Success -> {
-            val recipes = (state as RecipeViewState.Success).recipes
-            SuccessComponent(recipes = recipes, onSearchClicked = {query ->
-                recipeViewModel.processIntent(RecipeViewIntent.SearchRecipes(query))
+            val recepies = state.recipes
+            SuccessComponent(recipes = recepies, onSearchClicked = { query ->
+                viewModel.processIntent(RecipeViewIntent.SearchRecipes(query))
             })
         }
+        // Failure Component
         is RecipeViewState.Error -> {
-            val message = (state as RecipeViewState.Error).message
+            val message = state.message
             ErrorComponent(message = message, onRefreshClicked = {
-                recipeViewModel.processIntent(RecipeViewIntent.LoadRandomRecipe)
+                viewModel.processIntent(RecipeViewIntent.LoadRandomRecipe)
             })
         }
     }
 
     LaunchedEffect(Unit) {
-        recipeViewModel.processIntent(RecipeViewIntent.LoadRandomRecipe)
+        viewModel.processIntent(RecipeViewIntent.LoadRandomRecipe)
     }
+
 }
