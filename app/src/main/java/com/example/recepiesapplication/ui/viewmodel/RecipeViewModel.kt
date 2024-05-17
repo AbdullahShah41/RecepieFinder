@@ -6,6 +6,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.recepiesapplication.data.api.MealApiClient
+import io.ktor.events.Events
 import kotlinx.coroutines.launch
 
 class RecipeViewModel: ViewModel() {
@@ -22,6 +23,14 @@ class RecipeViewModel: ViewModel() {
         }
     }
 
+
+    fun onEvent(events: VMEvents){
+
+        when(events){
+            VMEvents.TestEvent -> TODO()
+        }
+
+    }
     private fun loadRandomRecipe() {
         viewModelScope.launch {
             _state.value = RecipeViewState.Loading
@@ -47,6 +56,10 @@ class RecipeViewModel: ViewModel() {
                 _state.value = RecipeViewState.Error("Error fetching recipes")
             }
         }
+    }
+
+    sealed class VMEvents(){
+        object TestEvent : VMEvents()
     }
 
 }

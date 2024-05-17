@@ -1,6 +1,5 @@
 package com.example.recepiesapplication
 
-import android.content.Context
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -25,6 +24,7 @@ class DashboardActivity : ComponentActivity() {
 
         activity = this;
 
+
 //        MaterialTheme.colorScheme.background
         setContent {
             RecepiesApplicationTheme {
@@ -32,7 +32,7 @@ class DashboardActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
 //                    color = Color.White
                 ) {
-                    HomeScreen(state = recipeViewModel.state.value, activity)
+                    HomeScreen(state = recipeViewModel.state.value, recipeViewModel::onEvent )
                 }
             }
         }
