@@ -4,7 +4,7 @@ interface Common {
     interface PATHS {
         companion object {
             // For getting random
-            val PATH_URL = "https://www.themealdb.com/api/json/v1/1/random.php"
+            val PATH_URL = "http://www.themealdb.com/api/json/v1/1/random.php"
             // For getting search Recepies
             val PATH_URL_SEARCH = "https://www.themealdb.com/api/json/v1/1/search.php?s="
             // For getting recepies categories

@@ -48,16 +48,11 @@ class TestComposible : ComponentActivity() {
 //                    SliderMinimalExample()
 //                    SliderAdvancedExample()
 
-
                     BottomSheetDemo()
-
-
                 }
             }
-
         }
     }
-
 }
 
 
@@ -84,7 +79,6 @@ fun SliderMinimalExample() {
         Text(text = sliderPosition.toString())
     }
 }
-
 
 @Preview
 @Composable

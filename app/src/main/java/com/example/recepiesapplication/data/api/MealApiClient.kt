@@ -5,14 +5,14 @@ import com.example.recepiesapplication.data.model.MealResponse
 import com.example.recepiesapplication.utils.Common
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
-import io.ktor.client.engine.cio.CIO
-import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
+import io.ktor.client.engine.cio.*
+import io.ktor.client.plugins.contentnegotiation.*
 import io.ktor.client.request.get
-import io.ktor.serialization.kotlinx.json.json
+import io.ktor.serialization.kotlinx.json.*
 
 object MealApiClient {
 
-    private val apiClient = HttpClient(CIO){
+    private val apiClient = HttpClient(CIO) {
         install(ContentNegotiation) {
             json()
         }
@@ -20,9 +20,9 @@ object MealApiClient {
 
     // For getting random recipe
     suspend fun getRandomRecipe(): List<Meal> {
-        val url = Common.PATHS.PATH_URL
-        val response = apiClient.get(url).body() as MealResponse
-        return response.meals
+       val url = Common.PATHS.PATH_URL
+       val response = apiClient.get(url).body() as MealResponse
+       return response.meals
     }
 
     // For getting searched recipes
@@ -31,10 +31,4 @@ object MealApiClient {
         val response = apiClient.get(url).body() as MealResponse
         return response.meals
     }
-
-    // For displaying recipes categories
-/*    suspend fun getRecipesCategories() : List<Category> {
-
-    }*/
-
 }
