@@ -1,5 +1,7 @@
 package com.example.recepiesapplication
 
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.tooling.preview.Preview
 import com.example.recepiesapplication.utils.Common
 import org.junit.Test
 
@@ -22,4 +24,5 @@ class ExampleUnitTest {
         val query = "SeaFood"
         println("finalURL : ${Common.PATHS.PATH_URL_SEARCH + query}")
     }
+
 }

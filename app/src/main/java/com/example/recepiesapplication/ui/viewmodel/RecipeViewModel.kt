@@ -15,6 +15,7 @@ class RecipeViewModel: ViewModel() {
     // Holding the state
     val state: State<RecipeViewState> = _state
 
+/*
     fun processIntent(intent: RecipeViewIntent) {
         when(intent) {
             is RecipeViewIntent.LoadRandomRecipe -> loadRandomRecipe()
@@ -23,11 +24,15 @@ class RecipeViewModel: ViewModel() {
         }
     }
 
+*/
 
     fun onEvent(events: VMEvents){
 
         when(events){
-            VMEvents.TestEvent -> TODO()
+            VMEvents.TestEvent -> { // This is for testing
+                 }
+            VMEvents.loadRandom -> loadRandomRecipe()
+            is VMEvents.searchRecipe -> searchRecipe(query = events.searchQuery)
         }
 
     }
@@ -60,6 +65,11 @@ class RecipeViewModel: ViewModel() {
 
     sealed class VMEvents(){
         object TestEvent : VMEvents()
+        // loading random
+        object loadRandom : VMEvents()
+        // search recipes
+        data class searchRecipe(val searchQuery: String): VMEvents()
+
     }
 
 }
